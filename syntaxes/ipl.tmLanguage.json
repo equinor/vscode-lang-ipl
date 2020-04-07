@@ -1,0 +1,197 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "ipl",
+	"patterns": [
+		{
+			"include": "#sections"
+		},
+		{
+			"include": "#declarations"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#print"
+		},
+		{
+			"include": "#entities"
+		},
+		{
+			"include": "#endcomments"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#boolean"
+		},
+		{
+			"include": "#loops"
+		},
+		{
+			"include": "#runtime"
+		},
+		{
+			"include": "#conditional"
+		},
+		{
+			"include": "#symbols"
+		}
+	],
+	"repository": {
+		"entities": {
+			"patterns": [
+				{
+					"name": "entity.name.function.ipl",
+					"match": "[a-zA-Z0-9][a-z._A-Z0-9]*(?=\\()"
+				}
+			]
+		},
+		"declarations": {
+			"patterns": [
+				{
+					"name": "markup.bold.ipl, support.type.property-name.json",
+					"match": "\\bString\\b|\\bParameter\\b|\\bInt\\b|\\bFloat\\b|\\bFile\\b|\\bZone\\b|\\bBool\\b|\\bPoints\\b|\\bPolygons\\b|\\bGridModel\\b|\\bSurface\\b|\\bWell\\b|\\bLog\\b|\\bJob\\b|\\bFunctionXY\\b|\\bDistributionX\\b|\\bDistributionXY\\b|\\bFaciesModel\\b|\\bBody\\b|\\bBlockedLog\\b"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.ipl",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.ipl",
+					"match": "\\\\."
+				}
+			]
+		},
+		"linecomments": {
+			"patterns": [
+				{
+					"name": "comment.line.double-slash.ipl",
+					"match": "^//.*$"
+				}
+			]
+		},
+		"endcomments": {
+			"patterns": [
+				{
+					"name": "comment.ipl",
+					"match": "//.*$"
+				}
+			]
+		},
+		"sections": {
+			"patterns": [
+				{
+					"name": "markup.bold.ipl, keyword.ipl, markup.underline",
+					"match": "\\bFUNCTION\\b|\\bENDFUNCTION\\b|\\bRETURN\\b|\\bHALT\\b"
+				}
+			]
+		},
+		"numbers": {
+			"patterns": [
+				{
+					"match": "(?x)\n(?<!\\$)(?:\n  (?:\\b[0-9]+(\\.)[0-9]+[eE][+-]?[0-9]+\\b)| # 1.1E+3\n  (?:\\b[0-9]+(\\.)[eE][+-]?[0-9]+\\b)|       # 1.E+3\n  (?:\\B(\\.)[0-9]+[eE][+-]?[0-9]+\\b)|       # .1E+3\n  (?:\\b[0-9]+[eE][+-]?[0-9]+\\b)|            # 1E+3\n  (?:\\b[0-9]+(\\.)[0-9]+\\b)|                # 1.1\n  (?:\\b[0-9]+(\\.)\\B)|                      # 1.\n  (?:\\B(\\.)[0-9]+\\b)|                      # .1\n  (?:\\b[0-9]+\\b(?!\\.))                     # 1\n)(?!\\$)",
+					"captures": {
+						"0": {
+							"name": "constant.numeric.decimal.ipl"
+						},
+						"1": {
+							"name": "meta.delimiter.decimal.period.ipl"
+						},
+						"2": {
+							"name": "meta.delimiter.decimal.period.ipl"
+						},
+						"3": {
+							"name": "meta.delimiter.decimal.period.ipl"
+						},
+						"4": {
+							"name": "meta.delimiter.decimal.period.ipl"
+						},
+						"5": {
+							"name": "meta.delimiter.decimal.period.ipl"
+						},
+						"6": {
+							"name": "meta.delimiter.decimal.period.ipl"
+						}
+					}
+				}
+			]
+		},
+		"boolean": {
+			"patterns": [
+				{
+					"match": "\\bFALSE\\b|\\bTRUE\\b",
+					"name": "constant.language.boolean.ipl"
+				}
+			]
+		},
+		"conditional": {
+			"patterns": [
+				{
+					"match": "\\bIF\\b|\\bTHEN\\b|\\bELSE\\b|\\bENDIF\\b|\\bINSIDE\\b|\\bAND\\b|\\bOR\\b|\\bNOT\\b",
+					"name": "keyword.control.conditional.ipl"
+				}
+			]
+		},
+		"print": {
+			"patterns": [
+				{
+					"match": "\\bPrint\\b|\\bLabel\\b|\\bWriteLine\\b",
+					"name": "constant.language.boolean.ipl"
+				}
+			]
+		},
+		"loops": {
+			"patterns": [
+				{
+					"match": "\\bDO\\b|\\bWHILE\\b|\\bENDWHILE\\b|\\bENDFOR\\b|\\bFOR\\b|\\bFROM\\b|\\bTO\\b",
+					"name": "markup.bold.ipl, keyword.control.ipl"
+				}
+			]
+		},
+		"runtime": {
+			"patterns": [
+				{
+					"match": "\\bRUNTIME\\b|\\bENDRUNTIME\\b",
+					"name": "constant.language.boolean.ipl"
+				}
+			]
+		},
+		"ert": {
+			"patterns": [
+				{
+					"match": "\\s\\@\\S*",
+					"name": "constant.language.boolean.ipl"
+				},
+				{
+					"match": "\\{.*\\}",
+					"name": "constant.language.boolean.ipl"
+				}
+			]
+		},
+		"symbols": {
+			"patterns": [
+				{
+					"match": "\\(|\\)|,",
+					"name": "storage.type.ipl"
+				},
+				{
+					"match": "=",
+					"name": "keyword.operator.assignment.ipl"
+				},
+				{
+					"match": "<|>|<=|>=|\\[|\\]",
+					"name": "keyword.operator.arithmetic.ipl"
+				}
+			]
+		}
+	},
+	"scopeName": "source.ipl"
+}

@@ -1,0 +1,44 @@
+{
+    "name": "vscode-lang-ipl",
+    "displayName": "RMS IPL language",
+    "description": "Language support for RMS Internal Programming Language (IPL).",
+    "version": "0.1.0",
+    "author": "Thorbjørn Horgen",
+    "publisher": "thor85",
+    "repository": "https://github.com/equinor/vscode-lang-ipl",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "keywords": [
+        "language",
+        "ipl",
+        "rms",
+        "roxar",
+        "highlight",
+        "syntax"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "ipl",
+                "aliases": [
+                    "ipl"
+                ],
+                "extensions": [
+                    ".ipl"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "ipl",
+                "scopeName": "source.ipl",
+                "path": "./syntaxes/ipl.tmLanguage.json"
+            }
+        ]
+    }
+}
